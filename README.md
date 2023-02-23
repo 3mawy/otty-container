@@ -63,7 +63,7 @@ docker-compose down
 ## Running Artisan commands
 
 ```sh
-docker-compose exec php sh
+docker compose exec php sh
 # inside the container
 cd ..
 php artisan migrate
