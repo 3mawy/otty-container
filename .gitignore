@@ -1,6 +1,5 @@
 .idea
-otty-backend/php/app
-.env
+#.env
 
 #otty-api/frontend/dist
 #otty-api/frontend/node_modules
