@@ -1,0 +1,8 @@
+.idea
+otty-backend/php/app
+.env
+
+#otty-api/frontend/dist
+#otty-api/frontend/node_modules
+#otty-api/frontend/dist-ssr
+#otty-api/frontend/*.local
