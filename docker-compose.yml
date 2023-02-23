@@ -32,7 +32,7 @@ services:
       - db
       - cache
     ports:
-      - "8000:8000"
+      - "8003:8000"
     environment:
       APP_ENV: local
       APP_DEBUG: 'true'
