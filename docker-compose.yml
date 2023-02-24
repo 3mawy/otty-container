@@ -8,7 +8,7 @@ services:
       - "--providers.docker.exposedbydefault=false"
       - "--entrypoints.web.address=:80"
     ports:
-      - "80:80"
+      - "82:80"
       - "8080:8080"
     volumes:
       - "/var/run/docker.sock:/var/run/docker.sock:ro"
@@ -17,8 +17,8 @@ services:
     build: otty-frontend
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.spa-to-http.rule=Host(`serve-spa.localhost`)"
-      - "traefik.http.services.spa-to-http.loadbalancer.server.port=8080" # port inside of spa-to-http which should be used
+      - "traefik.http.routers.spa-to-http.rule=Host(`otty.localhost`)"
+      - "traefik.http.services.spa-to-http.loadbalancer.server.port=8080"
   nginx:
     build: otty-backend/nginx
     command: nginx -g "daemon off;"
