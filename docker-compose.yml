@@ -17,7 +17,7 @@ services:
     build: otty-frontend
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.spa-to-http.rule=Host(`127.0.0.1`)"
+      - "traefik.http.routers.spa-to-http.rule=Host(`45.93.137.150`)"
       - "traefik.http.services.spa-to-http.loadbalancer.server.port=8080"
   nginx:
     build: otty-backend/nginx
