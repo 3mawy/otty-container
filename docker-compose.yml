@@ -1,4 +1,24 @@
 services:
+  traefik:
+    image: "traefik:v2.6"
+    command:
+      #- "--log.level=DEBUG"
+      - "--api.insecure=true"
+      - "--providers.docker=true"
+      - "--providers.docker.exposedbydefault=false"
+      - "--entrypoints.web.address=:80"
+    ports:
+      - "80:80"
+      - "8080:8080"
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock:ro"
+
+  frontend:
+    build: otty-frontend
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.spa-to-http.rule=Host(`serve-spa.localhost`)"
+      - "traefik.http.services.spa-to-http.loadbalancer.server.port=8080" # port inside of spa-to-http which should be used
   nginx:
     build: otty-backend/nginx
     command: nginx -g "daemon off;"
@@ -10,17 +30,6 @@ services:
       - ./otty-backend/php/app/public:/var/www/html/app/public
 #      - ./otty-backend/nginx/nginx.conf/:/etc/nginx/conf.d/
 
-  frontend:
-    build:
-      context: ./otty-frontend
-      dockerfile: Dockerfile
-    tty: true
-    ports:
-      - "3001:3001"
-    volumes:
-      - ./otty-frontend/app:/app/otty-frontend
-    depends_on:
-      - php
 
   php:
     build: otty-backend/php
