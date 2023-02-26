@@ -31,8 +31,8 @@ services:
       DB_DATABASE: ${DB_DATABASE}
       DB_USERNAME: ${DB_USERNAME}
       DB_PASSWORD: ${DB_PASSWORD}
-#      MEMCACHED_HOST: cache
-#      CACHE_DRIVER: memcached
+      MEMCACHED_HOST: cache
+      CACHE_DRIVER: memcached
     working_dir: /var/www/html/
     volumes:
       - ./otty-backend/php/app:/var/www/html/
