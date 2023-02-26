@@ -1,6 +1,10 @@
 FROM php:8.1.9-fpm-alpine3.16
 # lumen packages
 RUN docker-php-ext-install mysqli pdo_mysql
+
+# Expose port 9000 and start php-fpm server (for FastCGI Process Manager)
+EXPOSE 9000
+CMD ["php-fpm"]
 # memcached
 ENV MEMCACHED_DEPS zlib-dev libmemcached-dev cyrus-sasl-dev
 RUN apk add --no-cache --update libmemcached-libs zlib

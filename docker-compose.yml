@@ -1,50 +1,27 @@
 services:
-  traefik:
-    image: "traefik:v2.6"
-    command:
-      #- "--log.level=DEBUG"
-      - "--api.insecure=true"
-      - "--providers.docker=true"
-      - "--providers.docker.exposedbydefault=false"
-      - "--entrypoints.web.address=:80"
-    ports:
-      - "8005:80"
-      - "8080:8080"
-    volumes:
-      - "/var/run/docker.sock:/var/run/docker.sock:ro"
 
   frontend:
-    build: otty-frontend
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.spa-to-http.tls=true"
-      - "traefik.http.routers.spa-to-http.rule=Host(`127.0.0.1`)"
-      - "traefik.http.services.spa-to-http.loadbalancer.server.port=8080"
-  nginx:
-    build: otty-backend/nginx
-    command: nginx -g "daemon off;"
-    links:
-      - php
-    ports:
-      - "83:83"
+    stdin_open: true
+    container_name: otty-frontend
+    build:
+      context: otty-frontend
+      dockerfile: Dockerfile
     volumes:
-      - ./otty-backend/php/app/public:/var/www/html/app/public
-#      - ./otty-backend/nginx/nginx.conf/:/etc/nginx/conf.d/
+      - /otty-frontend/app/node_modules
+      - /otty-frontend:/var/www/html/
+    networks:
+      - otty-network
 
-
-  php:
+  backend:
     build: otty-backend/php
-    volumes:
-      - ./otty-backend/php:/var/www/html
-    working_dir: /var/www/html/app/public
-    command: php-fpm
+    container_name: otty-backend
+    restart: unless-stopped
+    tty: true
     links:
       - db
-      - cache
-    ports:
-      - "8003:8000"
     environment:
-      APP_ENV: local
+#      APP_ENV: local
+      SERVICE_NAME: backend
       APP_DEBUG: 'true'
       APP_KEY: SomeRandomKey!!!
       APP_LOCALE: en
@@ -54,10 +31,33 @@ services:
       DB_DATABASE: ${DB_DATABASE}
       DB_USERNAME: ${DB_USERNAME}
       DB_PASSWORD: ${DB_PASSWORD}
-      MEMCACHED_HOST: cache
-      CACHE_DRIVER: memcached
+#      MEMCACHED_HOST: cache
+#      CACHE_DRIVER: memcached
+    working_dir: /var/www/html/
+    volumes:
+      - ./otty-backend/php/app:/var/www/html/
+      - ./otty-backend/php/app/php/laravel.ini:/usr/local/etc/php/conf.d/laravel.ini
+    networks:
+      - otty-network
+
+  nginx:
+    depends_on:
+      - backend
+      - frontend
+    build:
+      context: otty-backend/nginx
+      dockerfile: Dockerfile
+    container_name: otty-nginx
+    restart: unless-stopped
+    tty: true
+    ports:
+      - "84:80"
+    networks:
+      - otty-network
+
   db:
     image: mysql:8
+    container_name: otty-db
     command: --default-authentication-plugin=mysql_native_password # needed as of mysql 8
     ports:
       - "13306:3306"
@@ -69,8 +69,20 @@ services:
     volumes:
       - dbdata:/var/lib/mysql/
       - ./otty-backend/mysql/my.cnf:/etc/mysql/my.cnf
+    networks:
+      otty-network:
+
   cache:
+    container_name: otty-cache
     image: memcached:1.6-alpine
+    networks:
+      otty-network:
+
 volumes:
   dbdata:
     driver: local
+  backend-vol:
+
+networks:
+  otty-network:
+    driver: bridge
