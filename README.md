@@ -18,7 +18,7 @@ cd docker-lumen
 now, create the app in the `images/php` directory named `app`
 
 ```bash
-docker run --rm -it -v $(pwd)/images/php:/app $(docker build -q .) composer create-project --prefer-dist laravel/lumen ./app
+docker run --rm -it -v $(pwd)/otty-backend/php:/app $(docker build -q .) composer create-project --prefer-dist laravel/lumen ./app
 ```
 
 ### Configuration

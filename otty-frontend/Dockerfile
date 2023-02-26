@@ -1,10 +1,11 @@
-FROM node:16 as build-stage
+FROM node:16-alpine as build-stage
 WORKDIR /app
 COPY ./app/package*.json ./
+
 RUN npm install
 COPY ./app/ .
 RUN npm run build
-
+ENV NODE_ENV=production
 FROM nginx as production-stage
 EXPOSE 3000
 RUN mkdir /app
