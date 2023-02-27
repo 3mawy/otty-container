@@ -3,7 +3,7 @@ import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react'
 // import {setCredentials, logOut} from "../auth/authSlice";
 
 const baseQuery = fetchBaseQuery({
-    baseUrl: 'http://ottty.egchameleon.com/api',
+    baseUrl: 'https://ottty.egchameleon.com/api',
     // credentials: 'include',
     prepareHeaders: (headers, {getState}) => {
         const token = getState().auth.token;
