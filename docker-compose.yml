@@ -3,6 +3,7 @@ services:
   frontend:
     stdin_open: true
     container_name: otty-frontend
+    restart: unless-stopped
     build:
       context: otty-frontend
       dockerfile: Dockerfile
@@ -58,6 +59,7 @@ services:
   db:
     image: mysql:8
     container_name: otty-db
+    restart: unless-stopped
     command: --default-authentication-plugin=mysql_native_password # needed as of mysql 8
     ports:
       - "13306:3306"
