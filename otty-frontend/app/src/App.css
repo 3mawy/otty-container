@@ -40,3 +40,31 @@
 button {
   font-size: calc(10px + 2vmin);
 }
+
+
+.eyes {
+  width: 100%;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  column-gap: 32px;
+}
+
+.eye {
+  width: 25px;
+  height: 25px;
+  border-radius: 100%;
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pupil {
+  width: 15px;
+  height: 15px;
+  border-radius: 101px;
+  background-color: #523911;
+}
