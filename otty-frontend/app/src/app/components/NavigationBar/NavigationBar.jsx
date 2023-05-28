@@ -3,6 +3,7 @@ import {IoPerson} from "react-icons/io5";
 import {GiAnimalHide} from "react-icons/gi";
 import HamburgerMenu from "./HamburgerMenu";
 import {Link} from "react-router-dom";
+import logo from "../../../images/logo.svg"
 
 const NavigationBar = () => {
     return (
@@ -17,10 +18,8 @@ const NavigationBar = () => {
                 </div>
                 <div className={`justify-self-center col-start-3 col-end-4   `}>
                     <Link to={`/`}>
-
-                        <GiAnimalHide
-                            className={`absolute top-0 right-0 left-0 w-auto min-h-[2rem] h-[5vh] mx-auto text-amber-600`}/>
-                        <GiAnimalHide className={`w-auto min-h-[3rem] h-[7vh] mx-auto text-amber-500 relative`}/>
+                        <img src={logo}
+                             className={' absolute top-0 right-0 left-0 w-auto min-h-[2rem] h-24 mx-auto text-amber-600'}/>
                     </Link>
                 </div>
                 <HamburgerMenu/>
