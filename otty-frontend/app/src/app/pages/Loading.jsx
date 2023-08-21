@@ -6,7 +6,7 @@ const Loading = () => {
     return (
         <div>
 
-            <div className={'bg-orange-500 h-screen place-items-center grid z-20 relative'}>
+            <div className={'bg-main-orange h-screen place-items-center grid z-20 relative'}>
                 <div className={'absolute '}>
                     <CatLocation className={'h-52 w-52'} />
                 </div>

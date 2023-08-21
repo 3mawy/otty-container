@@ -1,41 +1,36 @@
 <p align="center">
-  <a href="https://www.learnwithjason.dev">
-    <img src="https://res.cloudinary.com/jlengstorf/image/upload/q_auto,f_auto,w_240/v1579281727/lwj/learnwithjason.png" alt="Learn With Jason" width="120" />
+    <img src="src/images/logo.svg" alt="Otty" width="120" />
   </a>
 </p>
 <h1 align="center">
-  Let’s Learn Modern Redux! (with Mark Erikson)
+  Otty Vite
 </h1>
 <h3 align="center">
-  This app was built live on <em>Learn With Jason</em> and it was super fun and I’m sad you weren’t there.
+  This app was built in the memory of kheyara the best cat a man could ask for
 </h3>
-<p align="center">
-  But don’t worry! You can still: 
-  <a href="https://www.learnwithjason.dev/let-s-learn-modern-redux"><strong>watch the video</strong></a> · 
-  <a href="https://lets-learn-redux-toolkit.netlify.app"><strong>see the demo</strong></a> · 
-  <a href="https://app.netlify.com/start/deploy?repository=https://github.com/learnwithjason/lets-learn-redux-toolkit&utm_source=learnwithjason&utm_medium=github&utm_campaign=devex"><strong>deploy this project</strong></a> · 
-  <a href="https://jason.af/lwj/schedule"><strong>see upcoming episodes</strong></a>
-</p>
 
-&nbsp;
+## Color Reference
 
-A lot has changed in Redux since it was originally created. In this episode, Mark Erikson will teach us about Redux Toolkit an React-Redux hooks.
+| Color             | Hex                                                                |
+| ----------------- | ------------------------------------------------------------------ |
+| Example Color | ![#fff8f8](https://via.placeholder.com/10/fff8f8?text=+) #fff8f8 |
+| Example Color | ![#FFE5D9](https://via.placeholder.com/10/FFE5D9?text=+) #FFE5D9 |
+| Example Color | ![#FFCAD4](https://via.placeholder.com/10/FFCAD4?text=+) #FFCAD4 |
+| Example Color | ![#e7919f](https://via.placeholder.com/10/e7919f?text=+) #e7919f |
+| Example Color | ![#85676f](https://via.placeholder.com/10/85676f?text=+) #85676f |
+| Example Color | ![#72555d](https://via.placeholder.com/10/72555d?text=+) #72555d |
+| Example Color | ![#a2ccb4](https://via.placeholder.com/10/a2ccb4?text=+) #a2ccb4 |
+| Example Color | ![#f8b261](https://via.placeholder.com/10/f8b261?text=+) #f8b261 |
 
-&nbsp;
 
-## More Information
+## to run locally dev mode
 
-- [Watch this app get built live + see links and additional resources][episode]
-- [Follow _Learn With Jason_ on Twitch][twitch] to watch future episodes live
-- [Add the _Learn With Jason_ schedule to your Google Calendar][cal]
+```bash
+  npm install
+  npm run dev
+```
 
-&nbsp;
-<p align="center">
-  <a href="https://app.netlify.com/start/deploy?repository=https://github.com/learnwithjason/lets-learn-redux-toolkit&utm_source=learnwithjason&utm_medium=github&utm_campaign=devex">
-    <img src="https://www.netlify.com/img/deploy/button.svg" alt="Deploy this project to Netlify" />
-  </a>
-</p>
+## Tech Stack
 
-[episode]: https://www.learnwithjason.dev/let-s-learn-modern-redux
-[twitch]: https://jason.af/twitch
-[cal]: https://jason.af/lwj/cal
+**Client:** React, Vite, Redux-toolkit, TailwindCSS
+

@@ -33,11 +33,11 @@ const ReactCamera = () => {
                         className={`w-screen object-cover`}
                     />
                     <button onClick={capture}
-                            className={` mx-auto fixed z-50 bottom-5 mx-auto bg-red-400 p-2 rounded-full`}>
+                            className={` mx-auto fixed z-50 bottom-5 bg-light-red p-2 rounded-full`}>
                         <BiCamera className={`w-9 h-9 `}/>
                     </button>
                     <button onClick={() => navigate(-1)}
-                            className={`absolute z-50 top-4 right-4 mx-auto bg-orange-400 p-2 rounded-full`}>
+                            className={`absolute z-50 top-4 right-4 mx-auto bg-main-orange p-2 rounded-full`}>
                         <CgClose className={`w-7 h-7 `}/>
                     </button>
                 </div>

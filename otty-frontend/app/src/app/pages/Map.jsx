@@ -21,13 +21,13 @@ const Map = () => {
         content = <Loading/>
     } else if (isSuccess) {
         content =
-            <div className={'h-[94vh]'}>
+            <div className={'h-[100dvh]'}>
 
                 <GoogleMapComponent posts={data}/>
                 {/*<LeafletMap posts={data}/>*/}
             </div>
     } else if (isError) {
-        content = <div className={'h-[94vh]'}><GoogleMapComponent/></div>
+        content = <div className={'h-[100dvh]'}><GoogleMapComponent/></div>
 
     }
     return (

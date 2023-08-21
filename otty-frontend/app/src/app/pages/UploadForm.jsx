@@ -20,7 +20,7 @@ const UploadForm = () => {
 
     return (
         <div className={`h-[100%] absolute right-0 flex top-0 w-screen `}>
-            <div className={`p-5 z-50 mx-auto my-auto w-[22rem] bg-orange-100 rounded-lg`}>
+            <div className={`p-5 z-50 mx-auto my-auto w-[22rem] bg-primary rounded-lg`}>
                 <UploadMultiImages onImagesChange={setImages} images={images}/>
                 <textarea id="moreInfo" onChange={(e) => setExtraInfo(e.target.value)} rows={8}
                           className={`rounded-lg mt-5 mb-4 max-w-80 w-full p-2  mx-auto appearance-none focus-visible:outline-0`}
@@ -29,7 +29,7 @@ const UploadForm = () => {
                 {images.length > 0 && (<>
                     <div className="flex justify-center text-xl ">
                         <button onClick={onSubmitUploadForm}
-                                className={`bg-green-500 text-white p-2.5 rounded-md w-screen`}>
+                                className={`bg-light-green-500 text-white p-2.5 rounded-md w-screen`}>
                             ! تـأكيد
                         </button>
                     </div>

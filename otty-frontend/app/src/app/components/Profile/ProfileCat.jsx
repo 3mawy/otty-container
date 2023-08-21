@@ -46,7 +46,7 @@ const ProfileCat = () => {
                 ></button>
                 <button
                     onClick={() => setPetColor("orange")}
-                    className="rounded-full w-6 h-6 bg-orange-400 hover:bg-orange-500 transition-colors duration-300 transform hover:scale-110"
+                    className="rounded-full w-6 h-6 bg-main-orange hover:bg-main-orange-200 transition-colors duration-300 transform hover:scale-110"
                 ></button>
             </div>
 

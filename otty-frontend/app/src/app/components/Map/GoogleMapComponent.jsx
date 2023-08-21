@@ -123,7 +123,7 @@ console.log(posts)
                 </GoogleMap>
             </div>
             <div
-                className={' bg-orange-500 absolute'}
+                className={' bg-main-orange absolute'}
             >
                 <div>
 

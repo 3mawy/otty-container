@@ -58,7 +58,7 @@ const UploadMultiImages = ({onImagesChange, images}) => {
                                 onClick={onImageUpload}
                                 style={isDragging ? {backgroundColor: "#afafaf", color: "white"} : undefined}
                             >
-                                دوس هنا عشان تضيف 4 صور بكتيرك
+                                دوس هنا عشان تضيف صور
                             </div>
 
                             <div className=" grid grid-cols-4 gap-2 pt-4" style={{textAlign: "left"}}>

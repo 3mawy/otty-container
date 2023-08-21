@@ -2,11 +2,16 @@ import React, {useState} from 'react';
 import {GiCat, GiHamburgerMenu} from "react-icons/gi";
 import {AiOutlineNotification} from "react-icons/ai";
 import {Transition} from "@headlessui/react";
+import {useDispatch} from "react-redux";
+import {logOut} from "../../../features/auth/authSlice";
 
 const HamburgerMenu = () => {
+    const dispatch = useDispatch();
+    const userLogout = ()=> dispatch(logOut())
+
     const [isOpen, setIsOpen] = useState(false)
     return (
-        <div className={`justify-self-end justify-self-end col-span-2 mx-3 text-amber-600 relative `}>
+        <div className={`justify-self-end col-span-2 mx-3 text-main-orange relative `}>
             <div>
                 <button className={` ${isOpen && 'text-amber-700 ease-in transition duration-200'}`}>
                     <GiHamburgerMenu className={`w-auto  min-h-[3rem] h-[6vh] p-2`}
@@ -21,7 +26,7 @@ const HamburgerMenu = () => {
                     leaveTo="opacity-0"
                 >
                     <div className={`w-auto h-96  absolute right-0 left-0 pt-3 `}>
-                        <button className={` bg-amber-300 mb-2 p-2 rounded-full mx-auto`}>
+                        <button className={` bg-amber-300 mb-2 p-2 rounded-full mx-auto`} onClick={userLogout}>
                             <GiCat className={`w-7 h-7`}/>
                         </button>
                         <button className={` bg-amber-300 mb-2 p-2 rounded-full mx-auto`}>

@@ -38,15 +38,15 @@ console.log()
         content =
             <>
                 {data && <div className={`h-[100%] absolute right-0 flex top-0 w-screen `}>
-                    <div className={`p-5 z-50 mx-auto my-auto w-[22rem] bg-orange-100 rounded-lg`}>
+                    <div className={`p-5 z-50 mx-auto my-auto w-[22rem] bg-primary rounded-lg`}>
                         <p>{data.post.lat}</p>
                         <p>{data.post.lng}</p>
                         <ImageGallery images={data?.images}/>
-                        <p className={`rounded-lg h-52 bg-orange-200 mt-5 mb-4 max-w-80 w-full p-2  mx-auto appearance-none focus-visible:outline-0`}
+                        <p className={`rounded-lg h-52 bg-light-orange mt-5 mb-4 max-w-80 w-full p-2  mx-auto appearance-none focus-visible:outline-0`}
                            placeholder={`Extra Info`}>{data?.post?.notes}</p>
                         <div className="flex justify-center text-xl space-x-2 ">
                             <button onClick={trackLocation}
-                                    className={`bg-green-500 text-white p-2.5 rounded-md w-screen`}>
+                                    className={`bg-light-green-500 text-white p-2.5 rounded-md w-screen`}>
                                 تتبع
                             </button>
                             <button onClick={sharePost}

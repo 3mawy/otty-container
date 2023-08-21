@@ -8,10 +8,10 @@ import logo from "../../../images/logo.svg"
 const NavigationBar = () => {
     return (
         <div
-            className={`bg-gray-100 border-b-black border-opacity-5 border-b-2 `}>
+            className={`bg-gray-100 border-b-black border-opacity-5 border-b-2 absolute right-0 left-0 z-50 `}>
             <div
-                className={"h-[6vh] 2xl:container mx-auto min-h-[3rem] grid grid-cols-5 justify-items-stretch z-50 relative"}>
-                <div className={`justify-self-start mx-3 text-amber-600 `}>
+                className={"h-[4rem] 2xl:container mx-auto grid grid-cols-5 justify-items-stretch z-50 relative place-items-center"}>
+                <div className={`justify-self-start mx-3 text-main-orange `}>
                     <Link to={`/profile`}>
                         <IoPerson className={`w-auto h-[6vh]  min-h-[3rem] p-2  `}/>
                     </Link>
@@ -19,7 +19,7 @@ const NavigationBar = () => {
                 <div className={`justify-self-center col-start-3 col-end-4   `}>
                     <Link to={`/`}>
                         <img src={logo}
-                             className={' absolute top-0 right-0 left-0 w-auto min-h-[2rem] h-24 mx-auto text-amber-600'}/>
+                             className={' absolute top-0 right-0 left-0 w-auto min-h-[2rem] h-20  mx-auto text text-main-orange'}/>
                     </Link>
                 </div>
                 <HamburgerMenu/>

@@ -7,7 +7,7 @@ const WideButton = (props) => {
     return (
         <div>
             <Link to={link}>
-                <button className={`w-full h-16 ${bg} rounded-lg text-2xl text-lime-50`}>{text}
+                <button className={`w-full h-16 ${bg} rounded-lg text-2xl `}><p className={`text-lime-50 drop-shadow-md`}>{text}</p>
                 </button>
             </Link>
         </div>
