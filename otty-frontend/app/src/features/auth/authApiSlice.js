@@ -14,10 +14,10 @@ export const authApiSlice = apiSlice.injectEndpoints({
                 url: '/auth/register',
                 method: 'POST',
                 body: {
-                    name: credentials.username,
+                    name: credentials.name,
                     email: credentials.email,
                     password: credentials.password,
-                    password_confirmation: credentials.confirmPassword
+                    password_confirmation: credentials.passwordConfirmation
                 },
             }),
             // Pick out data and prevent nested properties in a hook or selector
