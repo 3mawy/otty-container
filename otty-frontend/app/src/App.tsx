@@ -8,18 +8,29 @@ import ButtonsOverlay from "./app/components/ButtonsOverlay";
 import Profile from "./app/pages/Profile";
 import PetInfo from "./app/pages/PetInfo";
 import './App.css'
-import {HashRouter as Router, Route, Routes} from "react-router-dom";
+import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
+import Login from "./app/pages/Login";
+import Register from "./app/pages/Register";
+import AuthProvider from "./provider/authProvider";
+import {ProtectedRoute} from "./app/components/ProtectedRoute";
+import {RegistrationRoute} from "./app/components/RegistrationRoute";
+import Chat from "./app/pages/Chat";
 
 function App() {
 
+    const[isAutheticated, setisAutheticated] = useState(false);
 
   return (
       <div className="App">
+        <AuthProvider>
         <Router>
           <Layout>
             <Routes>
               <Route path="/" element={<Home/>}/>
-              <Route path="/profile" element={<Profile/>}/>
+              <Route path="/login" element={<RegistrationRoute><Login/></RegistrationRoute>}/>
+              <Route path="/register" element={<RegistrationRoute><Register/></RegistrationRoute>}/>
+              <Route path="/profile" element={<ProtectedRoute><Profile/></ProtectedRoute>}/>
+              <Route path="/chat" element={<ProtectedRoute><Chat/></ProtectedRoute>}/>
               <Route path={"map"} element={<Map/>}>
                 <Route path={"lost"} element={<ButtonsOverlay lost={true}/>}/>
                 <Route path={"found"} element={<ButtonsOverlay lost={false}/>}/>
@@ -30,6 +41,7 @@ function App() {
             </Routes>
           </Layout>
         </Router>
+        </AuthProvider>
       </div>
   )
 }
