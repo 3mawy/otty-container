@@ -5,3 +5,4 @@
 #otty-api/frontend/node_modules
 #otty-api/frontend/dist-ssr
 #otty-api/frontend/*.local
+/otty-backend/nodejs/node_modules/

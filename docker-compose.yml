@@ -21,7 +21,7 @@ services:
     links:
       - db
     environment:
-#      APP_ENV: local
+      APP_ENV: local
       SERVICE_NAME: backend
       APP_DEBUG: 'true'
       APP_KEY: SomeRandomKey!!!
@@ -40,7 +40,15 @@ services:
       - ./otty-backend/php/app/php/laravel.ini:/usr/local/etc/php/conf.d/laravel.ini
     networks:
       - otty-network
-
+  otty-chat:
+    build:
+      context: otty-backend/nodejs
+    container_name: otty-chat
+    restart: unless-stopped
+    ports:
+      - "3005:3005" # Map the port as needed
+    networks:
+      - otty-network
   nginx:
     depends_on:
       - backend

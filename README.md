@@ -61,7 +61,7 @@ docker-compose down
 ```
 
 ## Running Artisan commands
-
+docker exec -it otty-backend php artisan migrate:fresh
 ```sh
 docker compose exec php sh
 # inside the container
@@ -73,3 +73,4 @@ php artisan cache:clear
 ## Contribute
 
 Submit a Pull Request!
+
