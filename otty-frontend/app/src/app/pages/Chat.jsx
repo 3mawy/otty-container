@@ -53,7 +53,7 @@ const messages = [
 const Chat = () => {
 
     const token = useSelector(selectCurrentToken);
-    const socket = io('https://otty-chat:3005', {
+    const socket = io('https://otty.nakhlawy.com/socket.io', {
         query: { token },
     });
 
