@@ -21,10 +21,10 @@ services:
     links:
       - db
     environment:
-      APP_ENV: local
+      APP_ENV: ${APP_ENV}
       SERVICE_NAME: backend
       APP_DEBUG: 'true'
-      APP_KEY: SomeRandomKey!!!
+      APP_KEY: ${APP_KEY}
       APP_LOCALE: en
       APP_FALLBACK_LOCALE: en
       DB_CONNECTION: mysql
@@ -33,7 +33,7 @@ services:
       DB_USERNAME: ${DB_USERNAME}
       DB_PASSWORD: ${DB_PASSWORD}
       MEMCACHED_HOST: cache
-      CACHE_DRIVER: memcached
+      CACHE_DRIVER: ${CACHE_DRIVER}
     working_dir: /var/www/html/
     volumes:
       - ./otty-backend/php/app:/var/www/html/
@@ -46,7 +46,7 @@ services:
     container_name: otty-chat
     restart: unless-stopped
     ports:
-      - "3005:3005" # Map the port as needed
+      - "3005:3005"
     networks:
       - otty-network
   nginx:

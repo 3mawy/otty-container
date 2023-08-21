@@ -53,7 +53,7 @@ const messages = [
 const Chat = () => {
 
     const token = useSelector(selectCurrentToken);
-    const socket = io('http://localhost:3005', {
+    const socket = io(import.meta.env.VITE_REACT_APP_SOCKET_UR, {
         query: { token },
     });
 
