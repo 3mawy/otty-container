@@ -13,13 +13,23 @@
 |
 */
 
-use App\Http\Controllers\CatPostController;
+use app\Http\Controllers\AuthController;
+
 
 $router->group(['prefix' => 'api'], function ($router) {
-$router->group(['prefix' => 'cat-posts'], function ($router) {
-    $router->get('/', ['uses' =>'CatPostController@index']);
-    $router->get('/{id}', ['uses' =>'CatPostController@show']);
-});});
+    $router->group(['prefix' => 'auth'], function ($router) {
+        $router->post('register', ['uses' => 'AuthController@register']);
+        $router->post('login',  ['uses' => 'AuthController@login']);
+        $router->post('logout', [AuthController::class, 'logout']);
+        $router->post('refresh', [AuthController::class, 'refresh']);
+        $router->post('me', [AuthController::class, 'me']);
+    });
+    $router->get('/users', ['uses' => 'UserController@index']);
+    $router->group(['prefix' => 'cat-posts'], function ($router) {
+        $router->get('/', ['uses' => 'CatPostController@index']);
+        $router->get('/{id}', ['uses' => 'CatPostController@show']);
+    });
+});
 $router->get('/', function () use ($router) {
     return $router->app->version();
 });
