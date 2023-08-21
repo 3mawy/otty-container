@@ -88,7 +88,7 @@ const Chat = () => {
                     className={`bg-gray-100 w-24 lg:min-w-[22rem] px-7 py-3 h-screen overflow-y-auto overflow-x-clip sm:flex place-content-center hidden`}>
                     <ChatUsersList/>
                 </div>
-                <div className="bg-gray-200 flex flex-1 flex-col p-3 h-screen w-full ">
+                <div className="bg-gray-200 flex flex-1 flex-col p-3 h-[100dvh] w-full ">
                   <ChatWindow messages={messages} sendMessage={sendMessage} />
                 </div>
             </div>
