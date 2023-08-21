@@ -1,22 +1,27 @@
 FROM php:8.1.9-fpm-alpine3.16
-# lumen packages
+
+# Set working directory
+WORKDIR /var/www/html
+
+# Install PHP extensions
 RUN docker-php-ext-install mysqli pdo_mysql
 
+# Install additional PHP packages
 RUN apk --no-cache add \
-php-phar \
-php-xml \
-php-xmlwriter
+    php-phar \
+    php-xml \
+    php-xmlwriter
 
-# if need composer to update plugin / vendor used
+# Install Composer globally
 RUN php -r "copy('http://getcomposer.org/installer', 'composer-setup.php');" && \
-php composer-setup.php --install-dir=/usr/bin --filename=composer && \
-php -r "unlink('composer-setup.php');" \
-RUN composer update
+    php composer-setup.php --install-dir=/usr/bin --filename=composer && \
+    php -r "unlink('composer-setup.php');"
 
 # Expose port 9000 and start php-fpm server (for FastCGI Process Manager)
 EXPOSE 9000
 CMD ["php-fpm"]
-# memcached
+
+# Install and configure Memcached
 ENV MEMCACHED_DEPS zlib-dev libmemcached-dev cyrus-sasl-dev
 RUN apk add --no-cache --update libmemcached-libs zlib
 RUN set -xe \
