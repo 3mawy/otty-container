@@ -54,7 +54,7 @@ const Chat = () => {
 
     const token = useSelector(selectCurrentToken);
     // TODO: EDIT URL
-    const socket = io('https://otty.nakhlawy.com/', {
+    const socket = io('http://localhost:3005', {
         query: { token },
     });
 

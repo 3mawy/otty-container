@@ -40,10 +40,10 @@ services:
       - ./otty-backend/php/app/php/laravel.ini:/usr/local/etc/php/conf.d/laravel.ini
     networks:
       - otty-network
-  otty-chat:
+  websocket:
     build:
       context: otty-backend/nodejs
-    container_name: otty-chat
+    container_name: websocket
     restart: unless-stopped
     ports:
       - "3005:3005"
@@ -53,7 +53,7 @@ services:
     depends_on:
       - backend
       - frontend
-      - otty-chat
+      - websocket
     build:
       context: otty-backend/nginx
       dockerfile: Dockerfile
