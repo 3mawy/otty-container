@@ -53,6 +53,7 @@ services:
     depends_on:
       - backend
       - frontend
+      - otty-chat
     build:
       context: otty-backend/nginx
       dockerfile: Dockerfile

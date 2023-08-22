@@ -28,7 +28,7 @@ const ChatWindow = ({token, messages, sendMessage}) => {
             setMessageInput('');
         }
     };
-
+console.log(messages)
     return (
         <>
             <div

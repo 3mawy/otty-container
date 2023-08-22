@@ -53,7 +53,8 @@ const messages = [
 const Chat = () => {
 
     const token = useSelector(selectCurrentToken);
-    const socket = io('https://otty.nakhlawy.com/socket.io', {
+    // TODO: EDIT URL
+    const socket = io('https://otty.nakhlawy.com/', {
         query: { token },
     });
 
