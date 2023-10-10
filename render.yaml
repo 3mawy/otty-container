@@ -1,3 +1,14 @@
+databases:
+  - name: db
+    image: mysql:8
+    environment:
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
+      - MYSQL_USER=${MYSQL_USERNAME}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+    ports:
+      - 13306:3306
+
 services:
   - name: frontend
     type: web
@@ -47,16 +58,6 @@ services:
     buildCommand: docker build -t otty-nginx -f otty-backend/nginx/Dockerfile otty-backend/nginx
     ports:
       - 83:80
-  - name: db
-    type: database  # You may adjust the type based on your needs
-    image: mysql:8
-    environment:
-      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
-      - MYSQL_DATABASE=${MYSQL_DATABASE}
-      - MYSQL_USER=${MYSQL_USERNAME}
-      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
-    ports:
-      - 13306:3306
   - name: cache
     type: cache  # You may adjust the type based on your needs
     image: memcached:1.6-alpine
