@@ -59,7 +59,7 @@ services:
     ports:
       - 83:80
   - name: cache
-    type: cache  # You may adjust the type based on your needs
+    type: web
     image: memcached:1.6-alpine
 
 volumes:
