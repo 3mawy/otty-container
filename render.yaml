@@ -1,7 +1,8 @@
 services:
   - name: frontend
+    type: web
     environment:
-      - OTTY_ENV: local
+      - OTTY_ENV=local
     buildCommand: docker build -t otty-frontend -f otty-frontend/Dockerfile otty-frontend
     volumes:
       - name: node-modules
@@ -11,20 +12,21 @@ services:
     ports:
       - 3000:3000
   - name: backend
+    type: web  # You may adjust the type based on your needs
     environment:
-      - APP_ENV: local
-      - SERVICE_NAME: backend
-      - APP_DEBUG: 'true'
-      - APP_KEY: SomeRandomKey!!!
-      - APP_LOCALE: en
-      - APP_FALLBACK_LOCALE: en
-      - DB_CONNECTION: mysql
-      - DB_HOST: db
-      - DB_DATABASE: ${DB_DATABASE}
-      - DB_USERNAME: ${DB_USERNAME}
-      - DB_PASSWORD: ${DB_PASSWORD}
-      - MEMCACHED_HOST: cache
-      - CACHE_DRIVER: memcached
+      - APP_ENV=local
+      - SERVICE_NAME=backend
+      - APP_DEBUG=true
+      - APP_KEY=SomeRandomKey!!!
+      - APP_LOCALE=en
+      - APP_FALLBACK_LOCALE=en
+      - DB_CONNECTION=mysql
+      - DB_HOST=db
+      - DB_DATABASE=${DB_DATABASE}
+      - DB_USERNAME=${DB_USERNAME}
+      - DB_PASSWORD=${DB_PASSWORD}
+      - MEMCACHED_HOST=cache
+      - CACHE_DRIVER=memcached
     buildCommand: docker build -t otty-backend -f otty-backend/php/Dockerfile otty-backend/php
     volumes:
       - name: app-data
@@ -34,25 +36,29 @@ services:
     ports:
       - 9000:9000
   - name: websocket
+    type: web  # You may adjust the type based on your needs
     buildCommand: docker build -t websocket otty-backend/nodejs
     ports:
       - 3005:3005
   - name: nginx
+    type: web
     environment:
-      - OTTY_ENV: local
+      - OTTY_ENV=local
     buildCommand: docker build -t otty-nginx -f otty-backend/nginx/Dockerfile otty-backend/nginx
     ports:
       - 83:80
   - name: db
+    type: database  # You may adjust the type based on your needs
     image: mysql:8
     environment:
-      - MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
-      - MYSQL_DATABASE: ${MYSQL_DATABASE}
-      - MYSQL_USER: ${MYSQL_USERNAME}
-      - MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
+      - MYSQL_USER=${MYSQL_USERNAME}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
     ports:
       - 13306:3306
   - name: cache
+    type: cache  # You may adjust the type based on your needs
     image: memcached:1.6-alpine
 
 volumes:
